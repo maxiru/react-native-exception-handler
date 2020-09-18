@@ -16,7 +16,7 @@ public class ReactNativeExceptionHandlerModule extends ReactContextBaseJavaModul
     private Activity activity;
     private static Class errorIntentTargetClass = DefaultErrorScreen.class;
     private static NativeExceptionHandlerIfc nativeExceptionHandler;
-    private static Boolean executedOnce = false;
+    public static Boolean executedOnce = false;
     private Callback callbackHolder;
     private Thread.UncaughtExceptionHandler originalHandler;
     private 
