@@ -36,14 +36,10 @@ public class ReactNativeExceptionHandlerModule extends ReactContextBaseJavaModul
           final boolean executeOriginalUncaughtExceptionHandler,
           final boolean forceToQuit,
           Callback customHandler) {
-
-    System.out.print("setHandlerforNativeException: start " + executedOnce);
     
     if (executedOnce) {
       return;
     }
-
-    System.out.print("setHandlerforNativeException: initializing " + executedOnce);
     
       callbackHolder = customHandler;
       originalHandler = Thread.getDefaultUncaughtExceptionHandler();
