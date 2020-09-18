@@ -77,6 +77,8 @@ public class ReactNativeExceptionHandlerModule extends ReactContextBaseJavaModul
    }
 
     public static void setNativeExceptionHandler(NativeExceptionHandlerIfc nativeExceptionHandler) {
-        ReactNativeExceptionHandlerModule.nativeExceptionHandler = nativeExceptionHandler;
+        if (ReactNativeExceptionHandlerModule.nativeExceptionHandler == null) {
+          ReactNativeExceptionHandlerModule.nativeExceptionHandler = nativeExceptionHandler;
+        }
     }
 }
