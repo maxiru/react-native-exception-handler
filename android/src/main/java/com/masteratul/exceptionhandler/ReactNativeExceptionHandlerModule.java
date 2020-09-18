@@ -16,10 +16,9 @@ public class ReactNativeExceptionHandlerModule extends ReactContextBaseJavaModul
     private Activity activity;
     private static Class errorIntentTargetClass = DefaultErrorScreen.class;
     private static NativeExceptionHandlerIfc nativeExceptionHandler;
-    public static Boolean executedOnce = false;
+    private static Boolean executedOnce = false;
     private Callback callbackHolder;
     private Thread.UncaughtExceptionHandler originalHandler;
-    private 
 
     public ReactNativeExceptionHandlerModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -38,17 +37,18 @@ public class ReactNativeExceptionHandlerModule extends ReactContextBaseJavaModul
           final boolean forceToQuit,
           Callback customHandler) {
 
-    System.out.print("setHandlerforNativeException: start" + callbackHolder);
+    System.out.print("setHandlerforNativeException: start " + executedOnce);
     
     if (executedOnce) {
       return;
     }
 
-    System.out.print("setHandlerforNativeException: initializing");
+    System.out.print("setHandlerforNativeException: initializing " + executedOnce);
     
       callbackHolder = customHandler;
       originalHandler = Thread.getDefaultUncaughtExceptionHandler();
-
+      executedOnce = true;
+    
       Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
 
           @Override
