@@ -16,8 +16,10 @@ public class ReactNativeExceptionHandlerModule extends ReactContextBaseJavaModul
     private Activity activity;
     private static Class errorIntentTargetClass = DefaultErrorScreen.class;
     private static NativeExceptionHandlerIfc nativeExceptionHandler;
+    private static Boolean executedOnce = false;
     private Callback callbackHolder;
     private Thread.UncaughtExceptionHandler originalHandler;
+    private 
 
     public ReactNativeExceptionHandlerModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -38,7 +40,7 @@ public class ReactNativeExceptionHandlerModule extends ReactContextBaseJavaModul
 
     System.out.print("setHandlerforNativeException: start" + callbackHolder);
     
-    if (callbackHolder != null) {
+    if (executedOnce) {
       return;
     }
 
